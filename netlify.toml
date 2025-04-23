@@ -4,3 +4,8 @@
 [dev]
   publish = "."
   functions = "netlify/functions"
+
+[[redirects]]
+  from = "/"
+  to = "/index2.html"
+  status = 200
