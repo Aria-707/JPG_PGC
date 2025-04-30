@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Prueba de Usuario</title>
+  <meta charset="UTF-8">
+  <title>Registro de Asistencia</title>
+  <script src="script.js"></script>
 </head>
 <body>
-<h1>Consultar Usuario</h1>
-<button id="consultar">Obtener Usuario</button>
-<pre id="resultado"></pre>
- 
-  <script>
-    document.getElementById('consultar').addEventListener('click', async () => {
-      const userId = 'user123'; // Reemplaza con el ID del documento que agregaste
-      try {
-        const response = await fetch(`https://jpg-pgc.netlify.app/.netlify/functions/getUser?id=${userId}`);
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
-        const data = await response.json();
-        document.getElementById('resultado').textContent = JSON.stringify(data, null, 2);
-      } catch (error) {
-        document.getElementById('resultado').textContent = error.toString();
-      }
-    });
-</script>
+  <h1>Registrar Asistencia</h1>
+  <form id="adicionarEstudiante" onsubmit="guardar(event)">
+    <label for="nombre">Nombre del estudiante:</label>
+    <input type="text" id="nombre">
+    <br>
+    <label for="estado">Estado de asistencia:</label>
+    <input type="text" id="estado" placeholder="ej. Presente / Ausente / Excusa">
+    <br>
+    <br>
+    <br>
+    <button type="submit">Aceptar</button>
+  </form>
+
+  <hr>
+
+  <div id="rta"></div>
 </body>
 </html>
