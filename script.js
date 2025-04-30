@@ -125,9 +125,9 @@ function cargar(resultado) {
     html += `
       <tr>
         <td>${item.nombre}</td>
-        <td>${item.estado}</td>
+        <td>${item.estadoAsistencia}</td>
         <td>
-          <button class="btn-editar" onclick="editar('${item.id}', '${item.nombre}', '${item.estado}')">Editar</button>
+          <button class="btn-editar" onclick="editar('${item.id}', '${item.nombre}', '${item.estadoAsistencia}')">Editar</button>
           <button class="btn-eliminar" onclick="eliminar('${item.id}')">Eliminar</button>
         </td>
       </tr>
