@@ -41,9 +41,76 @@ function cargar(resultado) {
     return;
   }
 
+  const estiloTabla = `
+    <style>
+      .tabla-asistencias {
+        width: 100%; /* La tabla ocupará todo el ancho disponible */
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+
+      .tabla-asistencias th, .tabla-asistencias td {
+        padding: 25px; /* Aumento de padding para más espacio en las celdas */
+        text-align: center;
+        font-size: 18px; /* Tamaño de texto más grande */
+      }
+
+      .tabla-asistencias th {
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      .tabla-asistencias td {
+        border-bottom: 1px solid #ddd;
+      }
+
+      .tabla-asistencias tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      .tabla-asistencias tr:hover {
+        background-color: #ddd;
+      }
+
+      .btn-editar, .btn-eliminar {
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px;
+      }
+
+      .btn-editar {
+        background-color: rgb(80, 187, 80);
+        color: white;
+      }
+
+      .btn-eliminar {
+        background-color: rgb(255, 69, 58);
+        color: white;
+      }
+
+      .btn-editar:hover {
+        background-color: rgb(60, 160, 60);
+      }
+
+      .btn-eliminar:hover {
+        background-color: rgb(255, 40, 30);
+      }
+    </style>
+  `;
+
   let html = `
+    ${estiloTabla}
+    <br><br>
+    <h2></h2>
     <h2>Listado de Asistencias</h2>
-    <table border="1">
+    <table class="tabla-asistencias">
       <thead>
         <tr>
           <th>Nombre del Estudiante</th>
@@ -58,10 +125,10 @@ function cargar(resultado) {
     html += `
       <tr>
         <td>${item.nombre}</td>
-        <td>${item.estadoAsistencia}</td>
+        <td>${item.estado}</td>
         <td>
-          <button onclick="editar('${item.id}', '${item.nombre}', '${item.estado}')">Editar</button>
-          <button onclick="eliminar('${item.id}')">Eliminar</button>
+          <button class="btn-editar" onclick="editar('${item.id}', '${item.nombre}', '${item.estado}')">Editar</button>
+          <button class="btn-eliminar" onclick="eliminar('${item.id}')">Eliminar</button>
         </td>
       </tr>
     `;
