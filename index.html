@@ -1,26 +1,125 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Prueba de Usuario</title>
-<script src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Asistencia</title>
+  <style>
+    /* Estilos globales */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url("imagenes/fondo.png"); /* Ruta directa a tu imagen de fondo */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .contenedor-principal {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    .cabecera {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 20px 40px;
+    }
+    .logo-universidad {
+      width: 150px;
+    }
+    .imagen-ia {
+      width: 120px;
+    }
+    .mensaje-central {
+      font-size: 30px;
+      font-weight: bold;
+      text-align: center;
+      flex: 1;
+    }
+    .formulario-registro {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px 60px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 700px;
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .formulario-registro label {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    .formulario-registro input {
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      width: 100%;
+    }
+    .formulario-registro button {
+      background-color: rgb(80, 187, 80);
+      color: white;
+      padding: 12px 28px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      align-self: center;
+    }
+    @media (max-width: 768px) {
+      .cabecera {
+        flex-direction: column;
+        text-align: center;
+      }
+      .logo-universidad,
+      .imagen-ia {
+        width: 100px;
+      }
+      .mensaje-central {
+        margin: 20px 0;
+        font-size: 22px;
+      }
+      .formulario-registro {
+        width: 95%;
+        padding: 30px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Registrar Asistencia</h1>
-  <form id="adicionarEstudiante" onsubmit="guardar(event)">
-    <label for="nombre">Nombre del estudiante:</label>
-    <input type="text" id="nombre">
-    <br>
-    <label for="estado">Estado de asistencia:</label>
-    <input type="text" id="estado" placeholder="ej. Presente / Ausente / Excusa">
-    <br>
-    <br>
-    <br>
-    <button type="submit">Aceptar</button>
-  </form>
-
-  <hr>
-
-  <div id="rta"></div>
+  <div class="contenedor-principal">
+    <div class="cabecera">
+      <img src="imagenes/logo_uni.png" alt="Logo Universidad" class="logo-universidad">
+      <div class="mensaje-central">Registrar Asistencia</div>
+      <img src="imagenes/IA.png" alt="Imagen IA" class="imagen-ia">
+    </div>
+    <form id="adicionarEstudiante" class="formulario-registro" onsubmit="guardar(event)">
+      <div>
+        <label for="nombre">Nombre del estudiante:</label>
+        <input type="text" id="nombre">
+      </div>
+      <div>
+        <label for="estadoAsistencia">Estado de asistencia:</label>
+        <input type="text" id="estadoAsistencia" placeholder="ej. Presente / Ausente / Excusa">
+      </div>
+      <button type="submit">Aceptar</button>
+    </form>
+    <div id="rta"></div>
+  </div>
 </body>
 </html>
