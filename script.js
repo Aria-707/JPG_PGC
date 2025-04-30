@@ -2,11 +2,11 @@ function guardar(event) {
   event.preventDefault();
 
   const nombre = document.getElementById("nombre").value;
-  const estado = document.getElementById("estado").value;
+  const estado = document.getElementById("estadoAsistencia").value;
 
   const data = JSON.stringify({
     nombre,
-    estado
+    estadoAsistencia: estado
   });
 
   fetch("/.netlify/functions/asistencia", {
@@ -58,7 +58,7 @@ function cargar(resultado) {
     html += `
       <tr>
         <td>${item.nombre}</td>
-        <td>${item.estado}</td>
+        <td>${item.estadoAsistencia}</td>
         <td>
           <button onclick="editar('${item.id}', '${item.nombre}', '${item.estado}')">Editar</button>
           <button onclick="eliminar('${item.id}')">Eliminar</button>
@@ -90,16 +90,16 @@ function listar(event) {
     });
 }
 
-function editar(id, nombre, estado) {
+function editar(id, nombre, estadoAsistencia) {
   const nuevoNombre = prompt("Nuevo nombre:", nombre);
-  const nuevoEstado = prompt("Nuevo estado:", estado);
+  const nuevoEstado = prompt("Nuevo estado:", estadoAsistencia);
 
   if (!nuevoNombre || !nuevoEstado) {
     console.log("Edición cancelada por el usuario");
     return;
   }
 
-  const body = { nombre: nuevoNombre, estado: nuevoEstado };
+  const body = { nombre: nuevoNombre, estadoAsistencia: nuevoEstado };
   console.log("Enviando actualización:", body);
 
   fetch(`/.netlify/functions/asistencia/${id}`, {

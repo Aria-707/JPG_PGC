@@ -1,4 +1,4 @@
-const admin = require("./firebaseAdmin");
+const admin = require("./netlify/functions/firebaseAdmin");
 const { v4: uuidv4 } = require("uuid");
 
 class AsistenciaControlador {
@@ -33,7 +33,6 @@ class AsistenciaControlador {
       const nuevaAsistencia = {
         nombre: body.nombre,
         estadoAsistencia: body.estadoAsistencia,
-        timestamp: new Date(),
       };
 
       const ref = await this.collection.add(nuevaAsistencia);
